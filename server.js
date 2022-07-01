@@ -12,7 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // turn on connection to db and server
-//!!!!!!!!! CHANGED FORCE TO FALSE TO STOP DROPPING TABLE AT STARTUP !!!!!!!!!
+// force: false will prevent tables from dropping on startup
+// force: true will allow changes to relationships but drops tables on startup **everytime??
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
